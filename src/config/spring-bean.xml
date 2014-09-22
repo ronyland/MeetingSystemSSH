@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<!-- Action -->
+	<bean id="defaultAction" class="com.mms.action.DefaultAction" scope="prototype"></bean>
+	<bean id="centerAction" class="com.mms.action.CenterAction" scope="prototype"></bean>
+	<bean id="departmentAction" class="com.mms.action.DepartmentAction" scope="prototype"></bean>
+	<bean id="deviceAction" class="com.mms.action.DeviceAction" scope="prototype"></bean>
+	<bean id="employeeAction" class="com.mms.action.EmployeeAction" scope="prototype"></bean>
+	<bean id="meetingAction" class="com.mms.action.MeetingAction" scope="prototype"></bean>
+	<bean id="meetingRoomAction" class="com.mms.action.MeetingRoomAction" scope="prototype"></bean>
+
+	<!-- Service -->
+	<bean id="employeeService" class="com.mms.service.implementation.EmployeeService">
+		<property name="hibernateTemplate" ref="employeeDao" />
+	</bean>
+	<bean id="departmentService" class="com.mms.service.implementation.DepartmentService">
+		<property name="hibernateTemplate" ref="departmentDao" />
+	</bean>
+	<bean id="deviceService" class="com.mms.service.implementation.DeviceService">
+		<property name="hibernateTemplate" ref="deviceDao" />
+	</bean>
+	<bean id="meetingService" class="com.mms.service.implementation.MeetingService">
+		<property name="hibernateTemplate" ref="meetingDao" />
+	</bean>
+	<bean id="meetingRoomService" class="com.mms.service.implementation.MeetingRoomService">
+		<property name="hibernateTemplate" ref="meetingRoomDao" />
+	</bean>
+
+	<!-- Persistence -->
+	<bean id="employeeDao" class="com.mms.persistence.EmployeeDao"></bean>
+	<bean id="departmentDao" class="com.mms.persistence.DepartmentDao"></bean>
+	<bean id="deviceDao" class="com.mms.persistence.DeviceDao"></bean>
+	<bean id="meetingDao" class="com.mms.persistence.MeetingDao"></bean>
+	<bean id="meetingRoomDao" class="com.mms.persistence.MeetingRoomDao"></bean>
+
+	<!-- <context:annotation-config /> -->
+
+	<context:component-scan base-package="com.mms" />
+
+</beans>

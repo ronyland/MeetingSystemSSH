@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<constant name="struts.devMode" value="false" />
+
+	<constant name="struts.configuration.xml.reload" value="true" />
+
+	<package name="global" extends="struts-default">
+		<interceptors>
+			<interceptor-stack name="default">
+				<interceptor-ref name="servletConfig" />
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="default" />
+	</package>
+
+	<!--name="webServlet的路径" class="类名首字母小写" method="方法名（首字母要小些）" -->
+	<package name="default" extends="global" namespace="/">
+
+		<action name="index" class="defaultAction" method="index">
+			<result name="login">/login.jsp</result>
+		</action>
+		<action name="login" class="defaultAction" method="login">
+			<result name="admin" type="redirect">/employee/search</result>
+			<result name="user" type="redirect">/meeting/note</result>
+			<result name="error" type="redirect">/index</result>
+		</action>
+		<action name="logout" class="defaultAction" method="logout">
+			<result name="logout" type="redirect">/index</result>
+		</action>
+
+	</package>
+
+	<package name="meeting" extends="global" namespace="/meeting">
+
+		<action name="delete" class="centerAction" method="deleteMeeting">
+			<result name="success">/index.jsp</result>
+			<result name="error" type="redirect">/error.jsp</result>
+		</action>
+		<action name="invited" class="centerAction" method="invitedMeeting">
+			<result name="success">/invitedMeeting.jsp</result>
+			<result name="error" type="redirect">/error.jsp</result>
+		</action>
+		<action name="my_meeting" class="centerAction" method="myMeeting">
+			<result name="success">/myMeeting.jsp</result>
+		</action>
+		<action name="note" class="centerAction" method="noteMeeting">
+			<result name="success">/user.jsp</result>
+			<result name="error" type="redirect">/error.jsp</result>
+		</action>
+		<action name="subscribe" class="centerAction" method="subscribe">
+			<result name="success" type="redirect">subscribe_prepare</result>
+			<result name="error" type="redirect">/error.jsp</result>
+		</action>
+		<action name="subscribe_prepare" class="centerAction" method="subscribePrepare">
+			<result name="success">/subscribe.jsp</result>
+			<result name="error" type="redirect">/error.jsp</result>
+		</action>
+		<action name="update" class="centerAction" method="updateMeeting">
+			<result name="success">subscribe_prepare</result>
+			<result name="error" type="redirect">/error.jsp</result>
+		</action>
+		<action name="update_prepare" class="centerAction" method="updateMeetingPrepare">
+			<result name="success">/updateMeeting.jsp</result>
+			<result name="error" type="redirect">/error.jsp</result>
+		</action>
+		<action name="allow" class="meetingAction" method="allowMeeting">
+			<result name="success">/meetingCheck.jsp</result>
+			<result name="error" type="httpheader">
+				<param name="status">500</param>
+			</result>
+		</action>
+		<action name="disallow" class="meetingAction" method="disallowMeeting">
+			<result name="success">/meetingCheck.jsp</result>
+			<result name="error" type="httpheader">
+				<param name="status">500</param>
+			</result>
+		</action>
+		<action name="note_verify" class="meetingAction" method="noteVerifyMeeting">
+			<result name="success">/meetingCheck.jsp</result>
+			<result name="error" type="httpheader">
+				<param name="status">500</param>
+			</result>
+		</action>
+
+	</package>
+
+
+	<package name="department" extends="global" namespace="/department">
+
+		<action name="add" class="departmentAction" method="addDepartment">
+			<result name="success">/department.jsp</result>
+			<result name="error" type="httpheader">
+				<param name="status">500</param>
+			</result>
+		</action>
+		<action name="delete" class="departmentAction" method="deleteDepartment">
+			<result name="success">/department.jsp</result>
+			<result name="error" type="httpheader">
+				<param name="status">500</param>
+			</result>
+		</action>
+		<action name="search" class="departmentAction" method="searchDepartment">
+			<result name="success">/department.jsp</result>
+			<result name="error" type="redirect">/error.jsp</result>
+		</action>
+		<action name="update" class="departmentAction" method="updateDepartment">
+			<result name="success">/department.jsp</result>
+			<result name="error" type="httpheader">
+				<param name="status">500</param>
+			</result>
+		</action>
+		<action name="employee" class="departmentAction" method="listDepartmentEmployee">
+			<result name="success">/out.jsp</result>
+			<result name="error" type="httpheader">
+				<param name="status">50</param>
+			</result>
+		</action>
+
+	</package>
+
+
+	<package name="device" extends="global" namespace="/device">
+
+		<action name="add" class="deviceAction" method="addDevice">
+			<result name="success">/device.jsp</result>
+			<result name="error" type="httpheader">
+				<param name="status">500</param>
+			</result>
+		</action>
+		<action name="delete" class="deviceAction" method="deleteDevice">
+			<result name="success">/device.jsp</result>
+			<result name="error" type="httpheader">
+				<param name="status">500</param>
+			</result>
+		</action>
+		<action name="search" class="deviceAction" method="searchDevice">
+			<result name="success">/device.jsp</result>
+			<result name="error" type="httpheader">
+				/error.jsp
+			</result>
+		</action>
+		<action name="update" class="deviceAction" method="updateDevice">
+			<result name="success">/device.jsp</result>
+			<result name="error" type="httpheader">
+				<param name="status">500</param>
+			</result>
+		</action>
+
+	</package>
+
+
+	<package name="employee" extends="global" namespace="/employee">
+
+		<action name="delete" class="employeeAction" method="deleteEmployee">
+			<result name="success">/admin.jsp</result>
+			<result name="error" type="httpheader">
+				<param name="status">500</param>
+			</result>
+		</action>
+		<action name="search" class="employeeAction" method="searchEmployee">
+			<result name="success">/admin.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="update" class="employeeAction" method="updateEmployee">
+			<result name="success">/admin.jsp</result>
+			<result name="error" type="httpheader">
+				<param name="status">500</param>
+			</result>
+		</action>
+		<action name="add" class="employeeAction" method="addEmployee">
+			<result name="success">/admin.jsp</result>
+			<result name="error" type="httpheader">
+				<param name="status">500</param>
+			</result>
+		</action>
+
+
+	</package>
+
+
+	<package name="meeting_room" extends="global" namespace="/meeting_room">
+
+		<action name="add" class="meetingRoomAction" method="addMeetingRoom">
+			<result name="success">/meetingRoom.jsp</result>
+			<result name="error" type="httpheader">
+				<param name="status">500</param>
+			</result>
+		</action>
+		<action name="delete" class="meetingRoomAction" method="deleteMeetingRoom">
+			<result name="success">/meetingRoom.jsp</result>
+			<result name="error" type="httpheader">
+				<param name="status">500</param>
+			</result>
+		</action>
+		<action name="search" class="meetingRoomAction" method="searchMeetingRoom">
+			<result name="success">/meetingRoom.jsp</result>
+			<result name="error" type="redirect">/error.jsp</result>
+		</action>
+		<action name="update" class="meetingRoomAction" method="updateMeetingRoom">
+			<result name="success">/meetingRoom.jsp</result>
+			<result name="error" type="httpheader">
+				<param name="status">500</param>
+			</result>
+		</action>
+		<action name="leisure" class="meetingRoomAction" method="listLeisureRoom">
+			<result name="success">/out.jsp</result>
+			<result name="error" type="httpheader">
+				<param name="status">500</param>
+			</result>
+		</action>
+
+	</package>
+
+</struts>

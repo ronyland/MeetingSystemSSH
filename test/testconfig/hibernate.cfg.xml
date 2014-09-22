@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="connection.pool_size">1</property>
+		<property name="current_session_context_class">thread</property>
+		<property name="hbm2ddl.auto">validate</property>
+		<property name="hibernate.cache.use_second_level_cache ">false</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/mms_ssh?useUnicode=true&amp;characterEnconding=UTF-8</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">2262934asd</property>
+		<property name="hibernate.jdbc.batch_size">20</property>
+		<property name="hibernate.query.substitutions">true 1, false 0</property>
+		<property name="show_sql">true</property>
+
+		<mapping class="com.mms.domain.Department" />
+		<mapping class="com.mms.domain.Device" />
+		<mapping class="com.mms.domain.Employee" />
+		<mapping class="com.mms.domain.Meeting" />
+		<mapping class="com.mms.domain.MeetingRoom" />
+		<mapping class="com.mms.domain.association.MeetingDeviceRent" />
+		<mapping class="com.mms.domain.association.MeetingInvitation" />
+	</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,113 @@
+a {
+	cursor: pointer;
+}
+
+.navtop1 {
+	height: 50px;
+	background: #663333;
+	opacity: 0.8;
+}
+
+.navtop2 {
+	width: 160px;
+	height: 49px;
+	float: left;
+	position: absolute;
+}
+
+.liststyle ul {
+	list-style: none;
+	position: absolute;
+}
+
+.liststyle ul li {
+	position: absolute;
+}
+
+.navtop3 {
+	height: 49px;
+	overflow: hidden;
+}
+
+.navcolor {
+	color: #fff;
+}
+
+.navwidth1 {
+	margin: 0 0 0 350px;
+	width: 400px;
+	text-align: center;
+	font-size: 36px;
+	font-weight: bolder;
+}
+
+.navwidth2 {
+	margin-left:100px;
+	width: 200px;
+	text-align: center;
+	font-size: 20px;
+	font-color: #fff;
+}
+
+.navwidth3 {
+	width: 80px;
+	text-align: center;
+	font-size: 20px;
+	font-color: #fff;
+}
+
+.backImage {
+	
+}
+
+.navleft {
+	width: 160px;
+	margin: 150px 0 0 104px;
+	float: left;
+	position: absolute;
+}
+
+.navleft ul {
+	background: #ffffcc;
+	opacity: 0.8;
+}
+
+.navleft ul li a {
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	color: #555;
+}
+
+.navleft ul li a:hover {
+	color: #fff;
+	background: #663333;
+}
+
+.navleft ul li a span {
+	color: #ff6633;
+}
+
+.navleft ul li a span:hover {
+	color: #fff;
+}
+
+.bodyright {
+	background: #fff;
+	float: left;
+	margin: 100px 0 0 300px;
+	width: 920px;
+	position: relative;
+}
+
+.bottomspan {
+	margin: 0 450px 0 0;
+	position: relative;
+}
+
+.spliter {
+	height: 1px;
+	width: 100%;
+	background: #DDD;
+	overflow: hidden
+}
